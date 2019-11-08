@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+void build_ziggurat(int n)
+{
+	int Ziggurat[n][n];
+	int a=1;
+	for(int b=0;b<(n/2+n%2);++b)
+	{
+	for(int x=0+b;x<n-b;++x)
+	{
+		Ziggurat[x][0+b]=a;
+		Ziggurat[x][n-1-b]=a;
+	}
+	for(int y=0+b;y<n-b;++y)
+	{
+		Ziggurat[0+b][y]=a;
+		Ziggurat[n-1-b][y]=a;
+	}
+	++a;
+	}
+	for(int x=0;x<n;++x)
+	{
+		for(int y=0;y<n;++y)
+		{
+			cout<<Ziggurat[x][y]<<" ";
+		}
+		cout<<"\n";
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	build_ziggurat(n);
+	// your code goes here
+	return 0;
+}

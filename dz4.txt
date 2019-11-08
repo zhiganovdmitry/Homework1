@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+void dig_trench(int n)
+{
+	int Trench[n][n];
+	for(int i=0;i<n;++i )
+	{
+		Trench[i][i]=0;
+	}
+	int a=1;
+	for(int x=1;x<n;++x)
+	{
+		for(int y=0;y<n-x;++y)
+		{
+			Trench[y][y+x]=a;
+		}
+		++a;
+	}
+	a=1;
+	for(int y=1;y<n;++y)
+	{
+		for(int x=0;x<n-y;++x)
+		{
+			Trench[x+y][x]=a;
+		}
+		++a;
+	}
+	//cout<<Trench[1][1];
+	for(int x=0;x<n;++x)
+	{
+		for(int y=0;y<n;++y)
+		{
+			cout<<Trench[x][y]<<" ";
+		}
+		cout<<"\n";
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	dig_trench(n);
+	// your code goes here
+	return 0;
+}
