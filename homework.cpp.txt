@@ -1,0 +1,236 @@
+Номер 1
+#include <iostream>
+using namespace std;
+void delete_duplicates(int n)
+{
+	int Array[n];
+	for(int i=0;i<n;++i)
+	{
+		cin>>Array[i];
+	}
+	int count=0;
+	cout<<Array[0]<<" ";
+	for(int i=1;i<n;++i)
+	{
+		for(int j=0;j<i;++j)
+		{
+			if(Array[i]==Array[j])
+			{
+				++count;
+			}
+		}
+		if(count==0)
+			{
+			 cout<<Array[i]<<" ";
+			}
+		count=0;
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	if(n==0)
+	{
+		return 0;
+	}
+	delete_duplicates(n);
+	return 0;
+}
+Номер 2
+#include <iostream>
+#include <math.h>
+using namespace std;
+int simple(int a)
+{
+	int count=0; 
+	if(a<2)
+	{
+		return 0;	
+	}
+	for(int i=2;i<a;++i)
+	{
+		if(a%i==0)
+		{
+			++count;
+		}
+	}
+	if(count==0)
+	{
+		return 1;
+	} else
+	{
+		return 0;
+	}
+}
+void delete_annoying_primes(int n)
+{
+	int Array[n];
+	for(int i=0;i<n;++i)
+	{
+		cin>>Array[i];
+	}
+	int count=0;
+	for(int i=0;i<n;++i)
+	{
+		for(int j=0;j<n;++j)
+		{
+			if((Array[i]==Array[j])&&(simple(Array[i])==1))
+			{
+				++count;
+			}
+		}
+		if((count==0)||(count==1))
+			{
+			 cout<<Array[i]<<" ";
+			}
+		count=0;
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	if(n==0)
+	{
+		return 0;
+	}
+	delete_annoying_primes(n);
+	return 0;
+}
+Номер 3
+#include <iostream>
+using namespace std;
+void build_ziggurat(int n)
+{
+	int Ziggurat[n][n];
+	int a=1;
+	for(int b=0;b<(n/2+n%2);++b)
+	{
+	for(int x=0+b;x<n-b;++x)
+	{
+		Ziggurat[x][0+b]=a;
+		Ziggurat[x][n-1-b]=a;
+	}
+	for(int y=0+b;y<n-b;++y)
+	{
+		Ziggurat[0+b][y]=a;
+		Ziggurat[n-1-b][y]=a;
+	}
+	++a;
+	}
+	for(int x=0;x<n;++x)
+	{
+		for(int y=0;y<n;++y)
+		{
+			cout<<Ziggurat[x][y]<<" ";
+		}
+		cout<<"\n";
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	build_ziggurat(n);
+	// your code goes here
+	return 0;
+}
+Номер 4
+#include <iostream>
+using namespace std;
+void dig_trench(int n)
+{
+	int Trench[n][n];
+	for(int i=0;i<n;++i )
+	{
+		Trench[i][i]=0;
+	}
+	int a=1;
+	for(int x=1;x<n;++x)
+	{
+		for(int y=0;y<n-x;++y)
+		{
+			Trench[y][y+x]=a;
+		}
+		++a;
+	}
+	a=1;
+	for(int y=1;y<n;++y)
+	{
+		for(int x=0;x<n-y;++x)
+		{
+			Trench[x+y][x]=a;
+		}
+		++a;
+	}
+	//cout<<Trench[1][1];
+	for(int x=0;x<n;++x)
+	{
+		for(int y=0;y<n;++y)
+		{
+			cout<<Trench[x][y]<<" ";
+		}
+		cout<<"\n";
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	dig_trench(n);
+	// your code goes here
+	return 0;
+}
+Номер 7
+#include <iostream>
+using namespace std;
+void strange_multiply(int a,int b)
+{
+	int x;
+	x=a;
+	for(int i=0;i<b-1;++i)
+	{
+		a+=x;
+	}
+	cout<<a;
+}
+int main() {
+	int a,b;
+	cin>>a>>b;
+	strange_multiply(a,b);
+	// your code goes here
+	return 0;
+}
+Номер 8
+#include <iostream>
+#include <math.h>
+using namespace std;
+int gcd(int a, int b) {
+
+    if (a == b) {
+        return a;
+    }
+    if (a > b) {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    return gcd(a,b-a);
+}
+void proper_fraction(int n)
+{
+	int count=0;
+	for(int i=1;i<n;++i)
+	{
+		if(gcd(i,n)==1)
+		{
+			++count;
+		}
+	}
+	cout<<count*2;
+}
+int main() {
+	int n;
+	cin>>n;
+	proper_fraction(n);
+	// your code goes here
+	return 0;
+}
+
